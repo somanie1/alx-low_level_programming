@@ -1,14 +1,21 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-int main() {
-    char letter = 'a';
+/**
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
 
-    while (letter <= 'z') {
-        printf("%c", letter);
-        letter++;
-    }
-    
-    printf("\n");
-    
-    return 0;
+int main(void)
+{
+        char letter;
+
+        for (letter = 'a'; letter <= 'z'; letter++)
+                putchar(letter);
+
+        putchar('\n');
+
+        return (0);
 }
