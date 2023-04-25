@@ -1,10 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include "main.h"
 
 /**
  * main - Entry point
- *
+ * Description: 'prints _putchar to stdout'
  * Return: Always 0 (Success)
  */
 
