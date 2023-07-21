@@ -1,22 +1,41 @@
 #include "lists.h"
 
 /**
- * get_nodeint_at_index - returns the node at a certain index in a linked list
- * @head: first node in the linked list
- * @index: index of the node to return
+ * insert_dnodeint_at_index - Inserts a new node in a dlistint_t
+ *                            list at a given position.
+ * @h: A pointer to the head of the dlistint_t list.
+ * @idx: The position to insert the new node.
+ * @n: The integer for the new node to contain.
  *
- * Return: pointer to the node we're looking for, or NULL
+ * Return: If the function fails - NULL.
+ *         Otherwise - the address of the new node.
  */
-listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
+dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
- unsigned int i = 0;
- listint_t *temp = head;
+	dlistint_t *tmp = *h, *new;
 
- while (temp && i < index)
- {
- temp = temp->next;
- i++;
- }
+	if (idx == 0)
+		return (add_dnodeint(h, n));
 
- return (temp ? temp : NULL);
+	for (; idx != 1; idx--)
+	{
+		tmp = tmp->next;
+		if (tmp == NULL)
+			return (NULL);
+	}
+
+	if (tmp->next == NULL)
+		return (add_dnodeint_end(h, n));
+
+	new = malloc(sizeof(dlistint_t));
+	if (new == NULL)
+		return (NULL);
+
+	new->n = n;
+	new->prev = tmp;
+	new->next = tmp->next;
+	tmp->next->prev = new;
+	tmp->next = new;
+
+	return (new);
 }
